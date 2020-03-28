@@ -23,20 +23,20 @@ class nerfGun {
         this->model = model;
         range = 100;
         capacity = 144;
-        numDarts = 144;
+        numDarts = capacity;
         if ((capacity > 144) || (capacity <= 0)) {
             throw invalid_argument("Capacity set too high");
         }
 
 
     }
-        string getModel() { 
+        string getModel() {
             return model;
         }
         int getDartCount() {
-            if ((numDarts <= capacity) && (numDarts > 0)) {
+           // if ((numDarts <= capacity) && (numDarts > 0)) {
             return numDarts; 
-            }
+            /* }
             else if (numDarts < 0) {
                 throw invalid_argument("Dart count cannot be negative");
             }
@@ -45,9 +45,10 @@ class nerfGun {
             }
             else {
                 throw invalid_argument("Error");
-            }
-
-
+         */   }
+        //}
+        int getRange() {
+            return range;
         }
         int getCapacity() {
             return capacity;
@@ -77,12 +78,16 @@ class nerfGun {
 
 };
 
+
 int main() {
+    vector<nerfGun> nerfGuns;
+    
     string model;
     int range;
     int capacity;
     int numDarts;
     int quantity;
+    nerfGun myNerfGun(model,range,capacity);
     cout << "What is the model of your nerf gun? " << endl;
     cin >> model;
     cout << "What is the range of your nerf guns? " << endl;
@@ -96,6 +101,17 @@ int main() {
     }
 
     numDarts = capacity;
+
+    cout << "The Details For Your Nerf Gun are as Follows: " << endl;
+    cout << "Model " << myNerfGun.getModel();
+    cout << "Range: " << myNerfGun.getRange();
+    cout << "Capacity: " << myNerfGun.getCapacity();
+    cout << "Darts Currently Loaded: " << myNerfGun.getDartCount();
+    nerfGuns.push_back(myNerfGun);
+
+     /* for (int i = 0; i <= 7; i++) {
+        cout << nerfGuns[i] << endl;
+    }*/
 
 
 
